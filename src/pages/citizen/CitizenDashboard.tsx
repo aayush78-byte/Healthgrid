@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Hospital, Bed, AlertTriangle, Bot } from "lucide-react";
+import { Hospital, Bed, AlertTriangle, Bot, FileHeart, BookOpen } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -10,6 +10,15 @@ const stats = [
   { label: "Available Beds", value: "89", icon: Bed, color: "text-healthcare-green" },
   { label: "Active Alerts", value: "4", icon: AlertTriangle, color: "text-healthcare-amber" },
   { label: "AI Assistant", value: "Online", icon: Bot, color: "text-healthcare-teal" },
+];
+
+const quickAccessItems = [
+  { title: "Find Hospitals", url: "/citizen/hospitals", icon: Hospital, description: "Locate nearby healthcare facilities", color: "blue" },
+  { title: "AI Health Assistant", url: "/citizen/assistant", icon: Bot, description: "Get instant AI health insights", color: "teal" },
+  { title: "My Health Records", url: "/citizen/records", icon: FileHeart, description: "Access your medical history", color: "indigo" },
+  { title: "Bed Availability", url: "/citizen/beds", icon: Bed, description: "Check real-time bed status", color: "green" },
+  { title: "Emergency Alerts", url: "/citizen/alerts", icon: AlertTriangle, description: "Stay updated on health risks", color: "red" },
+  { title: "Health Education", url: "/citizen/education", icon: BookOpen, description: "Learn about wellness & Ayush", color: "amber" },
 ];
 
 export default function CitizenDashboard() {
@@ -36,6 +45,29 @@ export default function CitizenDashboard() {
             </Card>
           </motion.div>
         ))}
+      </div>
+
+      <div className="space-y-4">
+        <h2 className="font-display text-xl font-bold">Quick Access</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {quickAccessItems.map((item, i) => (
+            <motion.div key={item.title} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 + i * 0.05 }}>
+              <Link to={item.url}>
+                <Card className="glass-card-hover h-full">
+                  <CardContent className="p-5 flex items-start gap-4">
+                    <div className={`p-3 rounded-xl bg-healthcare-${item.color}/10`}>
+                      <item.icon className={`h-6 w-6 text-healthcare-${item.color}`} />
+                    </div>
+                    <div>
+                      <p className="font-bold">{item.title}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{item.description}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6">

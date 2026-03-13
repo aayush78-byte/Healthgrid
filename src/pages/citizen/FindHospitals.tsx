@@ -2,8 +2,26 @@ import { hospitals } from "@/data/mockData";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, Bed, Star, Phone } from "lucide-react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
+
+// Fix for default marker icon in Leaflet + Vite
+import "leaflet/dist/leaflet.css";
+import icon from "leaflet/dist/images/marker-icon.png";
+import iconShadow from "leaflet/dist/images/marker-shadow.png";
+
+const DefaultIcon = L.icon({
+  iconUrl: icon,
+  shadowUrl: iconShadow,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
 
 export default function FindHospitals() {
+  const center: [number, number] = [28.6139, 77.2090]; // New Delhi
+
   return (
     <div className="space-y-6">
       <div>
@@ -11,19 +29,25 @@ export default function FindHospitals() {
         <p className="text-muted-foreground text-sm">Discover nearby hospitals with real-time availability</p>
       </div>
 
-      {/* Map placeholder */}
       <Card className="glass-card overflow-hidden">
-        <div className="h-64 bg-accent/50 flex items-center justify-center relative">
-          <div className="absolute inset-0 healthcare-grid-bg opacity-20" />
-          <div className="text-center z-10">
-            <MapPin className="h-12 w-12 text-primary mx-auto mb-2 animate-float" />
-            <p className="text-muted-foreground text-sm">Interactive Map View</p>
-            <p className="text-xs text-muted-foreground">Showing hospitals near New Delhi</p>
-          </div>
-          {hospitals.map((h, i) => (
-            <div key={h.id} className="absolute w-3 h-3 rounded-full bg-primary animate-pulse-soft"
-              style={{ top: `${20 + i * 12}%`, left: `${15 + i * 16}%` }} title={h.name} />
-          ))}
+        <div className="h-80 w-full relative z-0">
+          <MapContainer center={center} zoom={12} style={{ height: "100%", width: "100%" }} scrollWheelZoom={false}>
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            {hospitals.map(h => (
+              <Marker key={h.id} position={[h.lat, h.lng]}>
+                <Popup>
+                  <div className="p-1">
+                    <h3 className="font-bold text-sm mb-1">{h.name}</h3>
+                    <p className="text-xs mb-1">{h.location}</p>
+                    <p className="text-xs font-semibold text-primary">{h.availableBeds} beds available</p>
+                  </div>
+                </Popup>
+              </Marker>
+            ))}
+          </MapContainer>
         </div>
       </Card>
 

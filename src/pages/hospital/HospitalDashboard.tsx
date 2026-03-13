@@ -1,14 +1,23 @@
 import { motion } from "framer-motion";
-import { Users, Bed, AlertTriangle, ShieldAlert } from "lucide-react";
+import { Users, Bed, AlertTriangle, ShieldAlert, BarChart3, Pill, ArrowLeftRight } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
 import { bedOccupancyData, alerts } from "@/data/mockData";
+import { Link } from "react-router-dom";
 
 const stats = [
   { label: "Patients Today", value: "127", icon: Users, color: "text-healthcare-blue" },
   { label: "Available Beds", value: "23", icon: Bed, color: "text-healthcare-green" },
   { label: "Emergency Capacity", value: "62%", icon: AlertTriangle, color: "text-healthcare-amber" },
   { label: "Disease Alerts", value: "4", icon: ShieldAlert, color: "text-healthcare-red" },
+];
+
+const quickAccessItems = [
+  { title: "Patient Records", url: "/hospital/patients", icon: Users, description: "Manage patient history", color: "blue" },
+  { title: "Bed Management", url: "/hospital/beds", icon: Bed, description: "Track real-time ward status", color: "green" },
+  { title: "Disease Analytics", url: "/hospital/analytics", icon: BarChart3, description: "Analyze health trends", color: "indigo" },
+  { title: "Drug Inventory", url: "/hospital/drugs", icon: Pill, description: "Monitor medication stock", color: "teal" },
+  { title: "Dual Coding Engine", url: "/hospital/coding", icon: ArrowLeftRight, description: "Map codes (Ayush & ICD-11)", color: "purple" },
 ];
 
 export default function HospitalDashboard() {
@@ -33,6 +42,29 @@ export default function HospitalDashboard() {
             </Card>
           </motion.div>
         ))}
+      </div>
+
+      <div className="space-y-4">
+        <h2 className="font-display text-xl font-bold">Quick Access</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {quickAccessItems.map((item, i) => (
+            <motion.div key={item.title} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 + i * 0.05 }}>
+              <Link to={item.url}>
+                <Card className="glass-card-hover h-full">
+                  <CardContent className="p-5 flex items-start gap-4">
+                    <div className={`p-3 rounded-xl bg-healthcare-${item.color}/10`}>
+                      <item.icon className={`h-6 w-6 text-healthcare-${item.color}`} />
+                    </div>
+                    <div>
+                      <p className="font-bold">{item.title}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{item.description}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6">
