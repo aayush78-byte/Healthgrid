@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, CheckCircle } from "lucide-react";
 import { dualCodingExamples } from "@/data/mockData";
 
-export default function DualCodingEngine() {
+export default function MedicinalCodeConversionEngine() {
   const [input, setInput] = useState("");
   const [result, setResult] = useState<typeof dualCodingExamples[0] | null>(null);
   const [loading, setLoading] = useState(false);
@@ -24,7 +24,7 @@ export default function DualCodingEngine() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="font-display text-2xl font-bold">AI Dual Coding Engine</h1>
+        <h1 className="font-display text-2xl font-bold">Medicinal Code Conversion Engine</h1>
         <p className="text-muted-foreground text-sm">Translate traditional diagnoses to NAMASTE & ICD-11 codes</p>
       </div>
 

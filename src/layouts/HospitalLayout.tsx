@@ -15,7 +15,7 @@ const menuItems = [
   { title: "Bed Management", url: "/hospital/beds", icon: Bed },
   { title: "Disease Analytics", url: "/hospital/analytics", icon: BarChart3 },
   { title: "Drug Inventory", url: "/hospital/drugs", icon: Pill },
-  { title: "Dual Coding Engine", url: "/hospital/coding", icon: ArrowLeftRight },
+  { title: "Medicinal Code Conversion Engine", url: "/hospital/coding", icon: ArrowLeftRight },
 ];
 
 function HospitalSidebar() {

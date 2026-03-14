@@ -17,7 +17,7 @@ const quickAccessItems = [
   { title: "Bed Management", url: "/hospital/beds", icon: Bed, description: "Track real-time ward status", color: "green" },
   { title: "Disease Analytics", url: "/hospital/analytics", icon: BarChart3, description: "Analyze health trends", color: "indigo" },
   { title: "Drug Inventory", url: "/hospital/drugs", icon: Pill, description: "Monitor medication stock", color: "teal" },
-  { title: "Dual Coding Engine", url: "/hospital/coding", icon: ArrowLeftRight, description: "Map codes (Ayush & ICD-11)", color: "purple" },
+  { title: "Medicinal Code Conversion Engine", url: "/hospital/coding", icon: ArrowLeftRight, description: "Map codes (Ayush & ICD-11)", color: "purple" },
 ];
 
 export default function HospitalDashboard() {

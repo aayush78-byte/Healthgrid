@@ -14,7 +14,7 @@ HealthGrid is a modern healthcare platform designed to bridge the gap between ci
 - **Bed Management**: Real-time tracking and management of ICU, General, and Emergency beds.
 - **Patient Records**: Streamlined access to patient data and diagnostic history.
 - **Disease Analytics**: Comprehensive visualizations of health trends and disease outbreaks.
-- **Dual Coding Engine**: Intelligent mapping between traditional Ayush codes and global ICD-11 standards.
+- **Medicinal Code Conversion Engine**: Intelligent mapping between traditional Ayush codes and global ICD-11 standards.
 
 ## Tech Stack
 - **Frontend**: React, TypeScript, Vite

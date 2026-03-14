@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const features = [
-  { icon: Brain, title: "AI Dual Coding Engine", desc: "Translate NAMASTE traditional codes to ICD-11 instantly with AI precision.", color: "text-healthcare-indigo" },
+  { icon: Brain, title: "Medicinal Code Conversion Engine", desc: "Translate NAMASTE traditional codes to ICD-11 instantly with AI precision.", color: "text-healthcare-indigo" },
   { icon: Bed, title: "Real-time Bed Intelligence", desc: "Live bed availability across ICU, general, and emergency wards.", color: "text-healthcare-teal" },
   { icon: FileHeart, title: "Portable Health Records", desc: "Carry your complete medical history digitally, accessible anywhere.", color: "text-healthcare-green" },
   { icon: Bot, title: "AI Health Assistant", desc: "Get instant health guidance bridging traditional and modern medicine.", color: "text-healthcare-blue" },
@@ -96,7 +96,7 @@ export default function LandingPage() {
             <Activity className="h-4 w-4 text-primary" />
             <span className="font-display font-semibold gradient-text">HealthGrid</span>
           </div>
-          © 2024 HealthGrid. AI-powered healthcare interoperability platform.
+          © 2026 HealthGrid. AI-powered healthcare interoperability platform.
         </div>
       </footer>
     </div>

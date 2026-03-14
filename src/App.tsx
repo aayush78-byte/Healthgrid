@@ -24,7 +24,7 @@ import PatientRecords from "./pages/hospital/PatientRecords";
 import BedManagement from "./pages/hospital/BedManagement";
 import DiseaseAnalytics from "./pages/hospital/DiseaseAnalytics";
 import DrugInventory from "./pages/hospital/DrugInventory";
-import DualCodingEngine from "./pages/hospital/DualCodingEngine";
+import MedicinalCodeConversionEngine from "./pages/hospital/MedicinalCodeConversionEngine";
 
 const queryClient = new QueryClient();
 
@@ -62,7 +62,7 @@ const App = () => (
               <Route path="beds" element={<BedManagement />} />
               <Route path="analytics" element={<DiseaseAnalytics />} />
               <Route path="drugs" element={<DrugInventory />} />
-              <Route path="coding" element={<DualCodingEngine />} />
+              <Route path="coding" element={<MedicinalCodeConversionEngine />} />
             </Route>
 
             <Route path="*" element={<NotFound />} />
